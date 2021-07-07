@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<h2>Zgłoszenie zapytania o produkt z prośbą o kontakt </h2>
+<p>Produkt {{ request.product }} </p>
+<p>Data i czas kontaktu {{ request.date }} Godzina: {{ request.hour }}:{{ request.minute }}</p>
+<br/>
+<p>Email do kontaktu {{ request.email }}</p>
+<p>Telefon do kontaktu {{ request.phone }}</p>
+<br/>
+<p>Wiadomość:</p>
+<p>{{ request.message }}</p>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-3">
+    <h3>Zgłoszenie zapytania o produkt w serwisie {{ service_name }}</h3>
+     {{ form_start(form) }}
+        {{ form_row(form.product) }}       
+        
+        <h5>Data i czas kontaktu zwrotnego</h5>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label class="required" for="contact_contact_date">Data</label>
+                <input type="text" id="datepicker" name="contact[date]" required="required" class="datepicker form-control" placeholder="rrrr-mm-dd" required >
+            </div>
+            <div class="col-md-4 mb-3">
+                {{ form_row(form.hour) }}
+            </div>
+            <div class="col-md-4 mb-3">
+                {{ form_row(form.minute) }}            
+            </div>
+        </div>
+        {{ form_row(form.phone) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.message) }}
+
+        {{ form_row(form._token) }}
+        <button type="submit" class="btn btn-success btn-submit full" title="Wyslij">Wyślij</button>
+
+    {{ form_end(form, {render_rest:false}) }}
+    </div>
+
+
+<script>
+jQuery(function($){
+	$.datepicker.regional['pl'] = {
+		closeText: 'Zamknij',
+		prevText: '&#x3c;Poprzedni',
+		nextText: 'Następny&#x3e;',
+		currentText: 'Dziś',
+		monthNames: ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec',
+		'Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'],
+		monthNamesShort: ['Sty','Lu','Mar','Kw','Maj','Cze',
+		'Lip','Sie','Wrz','Pa','Lis','Gru'],
+		dayNames: ['Niedziela','Poniedzialek','Wtorek','Środa','Czwartek','Piątek','Sobota'],
+		dayNamesShort: ['Nie','Pn','Wt','Śr','Czw','Pt','So'],
+		dayNamesMin: ['N','Pn','Wt','Śr','Cz','Pt','So'],
+		weekHeader: 'Tydz',
+		dateFormat: 'yy-mm-dd',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''};
+	$.datepicker.setDefaults($.datepicker.regional['pl']);
+});
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+      beforeShowDay: $.datepicker.noWeekends,
+      showButtonPanel: true,
+      dateFormat: 'yy-mm-dd'
+    });
+  } );
+</script>
+{% endblock %}
